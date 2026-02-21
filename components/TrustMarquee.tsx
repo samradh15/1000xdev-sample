@@ -1,10 +1,19 @@
+"use client";
+
 import React from 'react';
+import { motion } from "framer-motion";
 
 const LOGOS = ["NEXUS", "AURA", "VERTEX", "QUANTUM", "STRATOS", "LUMIERE"];
 
 export default function TrustMarquee() {
     return (
-        <section className="w-full py-24 relative z-10">
+        <motion.section
+            initial={{ opacity: 0, y: 20, filter: "blur(5px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="w-full py-24 relative z-10"
+        >
             <div className="max-w-7xl mx-auto px-6 mb-12">
                 <h2 className="text-center text-[10px] sm:text-xs font-sans font-semibold tracking-widest text-[#2A241D]/50 uppercase">
                     Trusted by ambitious founders
@@ -57,6 +66,6 @@ export default function TrustMarquee() {
                 </div>
 
             </div>
-        </section>
+        </motion.section>
     );
 }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Newsreader } from "next/font/google";
 import "./globals.css";
 import TactileBackground from "@/components/TactileBackground";
+import SmoothScroll from "@/components/SmoothScroll";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -29,8 +30,10 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${newsreader.variable} antialiased selection:bg-[#1A1A1A] selection:text-[#F9F8F6]`}
       >
-        <TactileBackground />
-        {children}
+        <SmoothScroll>
+          <TactileBackground />
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );

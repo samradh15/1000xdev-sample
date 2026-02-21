@@ -1,18 +1,31 @@
+"use client";
+
+import { motion } from "framer-motion";
 import FloatingCard from "./FloatingCard";
 
 export default function Hero() {
     return (
         <section className="relative w-full min-h-screen flex flex-col items-center justify-center pt-32 pb-20 px-6">
-            <div className="max-w-4xl text-center flex flex-col items-center gap-6 mb-16 z-10">
+            <motion.div
+                initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="max-w-4xl text-center flex flex-col items-center gap-6 mb-16 z-10"
+            >
                 <h1 className="font-serif text-5xl md:text-7xl font-bold tracking-tight text-text leading-[1.1]">
                     We turn raw ideas into <span className="italic font-light">shipped</span> infrastructure.
                 </h1>
                 <p className="font-sans text-lg md:text-xl text-text/70 max-w-2xl font-medium">
                     Infrastructure-grade engineering for AI-native startups.
                 </p>
-            </div>
+            </motion.div>
 
-            <div className="relative w-full max-w-5xl">
+            <motion.div
+                initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+                className="relative w-full max-w-5xl"
+            >
                 {/* 
                   User Explicit Reversal: Using the provided FoodHue snapshot 
                   instead of the CSS Dashboard to lock in the layout reference directly.
@@ -69,7 +82,7 @@ export default function Hero() {
                         </code>
                     </div>
                 </FloatingCard>
-            </div>
+            </motion.div>
         </section>
     );
 }
