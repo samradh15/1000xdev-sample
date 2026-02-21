@@ -16,24 +16,31 @@ export default function Hero() {
             <div className="relative w-full max-w-5xl">
                 <SketchRevealAsset />
 
-                {/* Floating Depth Cards */}
-                <FloatingCard className="top-10 -left-12 max-w-[200px] hidden md:flex animate-[bounce_6s_infinite]">
-                    <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-green-500" />
-                        <span className="text-xs font-semibold text-text">Shipped to Prod</span>
+                {/* Left Floating Card: Vertically centered, protruding 50% left */}
+                <FloatingCard className="top-1/2 -translate-y-1/2 -left-8 md:-left-24 w-64 hidden xl:flex animate-[bounce_10s_infinite]">
+                    <div className="flex flex-col gap-3">
+                        <div className="flex items-center gap-2 mb-2">
+                            <div className="w-2 h-2 rounded-full bg-[#E08552]" />
+                            <span className="text-sm font-semibold text-text">Shipped to Prod</span>
+                        </div>
+                        <span className="text-xs text-text/60 leading-relaxed font-sans">
+                            Sign up for automatic deployments of your core infrastructure, saving you engineering weeks.
+                        </span>
                     </div>
-                    <span className="text-[10px] text-text/60 font-mono">1000xdev-core-v2</span>
                 </FloatingCard>
 
-                <FloatingCard className="-bottom-8 -right-8 max-w-[240px] hidden md:flex animate-[bounce_8s_infinite_reverse]">
-                    <div className="flex border-b border-black/5 pb-2 mb-1">
-                        <span className="text-[10px] font-mono text-text/50">Terminal</span>
+                {/* Right Floating Card: Lower 20%, protruding 50% right */}
+                <FloatingCard className="bottom-[10%] -translate-y-0 -right-8 md:-right-24 w-56 hidden xl:flex animate-[bounce_8s_infinite_reverse]">
+                    <div className="flex flex-col gap-3">
+                        <span className="text-xs font-semibold text-text/50 font-sans tracking-wide">Live Output</span>
+                        <div className="flex border-b border-black/5 pb-3">
+                            <span className="text-lg font-serif text-text leading-tight font-medium">Terminal<br />Deployment</span>
+                        </div>
+                        <code className="text-[10px] text-text/80 font-mono mt-2 bg-[#F4F0EB]/50 p-2 rounded-md">
+                            &gt; target edge<br />
+                            &gt; deploying... 100%<br />
+                        </code>
                     </div>
-                    <code className="text-xs text-text/80 font-mono">
-                        $ npx deploy --target edge<br />
-                        {">"} deploying... 100%<br />
-                        {">"} live on global edge
-                    </code>
                 </FloatingCard>
             </div>
         </section>
