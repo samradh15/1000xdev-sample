@@ -5,20 +5,20 @@ export default function TactileBackground() {
                 className="fixed inset-0 z-[-2] w-screen h-screen bg-base pointer-events-none"
             />
 
-            {/* Grid Layer */}
+            {/* Grid Layer - Ultra fine and subtle */}
             <div
-                className="fixed inset-0 z-[-1] w-screen h-screen pointer-events-none opacity-[0.05]"
+                className="fixed inset-0 z-[-1] w-screen h-screen pointer-events-none opacity-[0.03]"
                 style={{
                     backgroundImage: `
-            linear-gradient(to right, #2A241D 1px, transparent 1px),
-            linear-gradient(to bottom, #2A241D 1px, transparent 1px)
+            linear-gradient(to right, #000000 0.5px, transparent 0.5px),
+            linear-gradient(to bottom, #000000 0.5px, transparent 0.5px)
           `,
                     backgroundSize: '40px 40px'
                 }}
             />
 
-            {/* Noise Layer */}
-            <div className="fixed inset-0 z-[0] w-screen h-screen pointer-events-none mix-blend-multiply opacity-[0.04]">
+            {/* Noise Layer - Premium static grain */}
+            <div className="fixed inset-0 z-[0] w-screen h-screen pointer-events-none mix-blend-multiply opacity-[0.03]">
                 <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
                     <filter id="tactileNoise">
                         <feTurbulence

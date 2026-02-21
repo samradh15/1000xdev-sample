@@ -23,11 +23,11 @@ export default function Hero() {
                   can still render freely outside of the mask limits.
                 */}
                 <div className="relative w-full rounded-[24px] overflow-hidden shadow-2xl border border-black/5 bg-white aspect-video isolate">
-                    {/* Layer 1: Base Grayscale Image */}
+                    {/* Layer 1: Base Grayscale Image with High Contrast/Brightness for "Raw Scratch" feel */}
                     <img
                         src="/hero-image.png"
                         alt="Platform Interface Base"
-                        className="absolute inset-0 w-full h-full object-cover object-top filter grayscale"
+                        className="absolute inset-0 w-full h-full object-cover object-top filter saturate-0 contrast-[1.5] brightness-[1.1]"
                     />
 
                     {/* Layer 2: Colored Overlay with Radial Mask */}
@@ -37,8 +37,8 @@ export default function Hero() {
                             backgroundImage: "url('/hero-image.png')",
                             backgroundSize: "cover",
                             backgroundPosition: "top center",
-                            WebkitMaskImage: "radial-gradient(circle at center, transparent 35%, black 80%)",
-                            maskImage: "radial-gradient(circle at center, transparent 35%, black 80%)"
+                            WebkitMaskImage: "radial-gradient(circle at center, transparent 15%, black 60%)",
+                            maskImage: "radial-gradient(circle at center, transparent 15%, black 60%)"
                         }}
                     />
                 </div>
