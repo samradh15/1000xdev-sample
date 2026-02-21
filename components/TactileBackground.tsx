@@ -5,12 +5,17 @@ export default function TactileBackground() {
                 className="fixed inset-0 z-[-2] w-screen h-screen bg-base pointer-events-none"
             />
 
-            {/* Grid Layer - Premium Dotted Grid */}
+            {/* Grid Layer - Premium Hybrid: Dots, Faint Grid, and Tactile Noise */}
             <div
-                className="fixed inset-0 z-[-1] w-screen h-screen pointer-events-none opacity-[0.06]"
+                className="fixed inset-0 z-[-1] w-screen h-screen pointer-events-none opacity-[0.05]"
                 style={{
-                    backgroundImage: 'radial-gradient(circle, #000000 1px, transparent 1px)',
-                    backgroundSize: '24px 24px'
+                    backgroundImage: `
+                        radial-gradient(circle, #000000 1px, transparent 1px),
+                        linear-gradient(to right, #000000 0.5px, transparent 0.5px),
+                        linear-gradient(to bottom, #000000 0.5px, transparent 0.5px)
+                    `,
+                    backgroundSize: '24px 24px, 24px 24px, 24px 24px',
+                    backgroundPosition: '0 0, 0 0, 0 0'
                 }}
             />
 
