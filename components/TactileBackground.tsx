@@ -5,17 +5,28 @@ export default function TactileBackground() {
                 className="fixed inset-0 z-[-2] w-screen h-screen bg-base pointer-events-none"
             />
 
-            {/* Grid Layer - Premium Hybrid: Dots, Faint Grid, and Tactile Noise */}
+            {/* Layer 1: The Dotted Structure (Cloth Lint Feel) */}
             <div
                 className="fixed inset-0 z-[-1] w-screen h-screen pointer-events-none opacity-[0.05]"
                 style={{
+                    backgroundImage: 'radial-gradient(circle, #000000 1px, transparent 1px)',
+                    backgroundSize: '24px 24px',
+                    backgroundPosition: '0 0'
+                }}
+            />
+
+            {/* Layer 2: The Faded Grid (Offsets and Fades into the dots) */}
+            <div
+                className="fixed inset-0 z-[-1] w-screen h-screen pointer-events-none opacity-[0.04]"
+                style={{
                     backgroundImage: `
-                        radial-gradient(circle, #000000 1px, transparent 1px),
                         linear-gradient(to right, #000000 0.5px, transparent 0.5px),
                         linear-gradient(to bottom, #000000 0.5px, transparent 0.5px)
                     `,
-                    backgroundSize: '24px 24px, 24px 24px, 24px 24px',
-                    backgroundPosition: '0 0, 0 0, 0 0'
+                    backgroundSize: '72px 72px', /* Much larger, sparser grid */
+                    backgroundPosition: '12px 12px', /* Offset from dots */
+                    WebkitMaskImage: 'radial-gradient(circle at 50% 50%, transparent 20%, black 100%)',
+                    maskImage: 'radial-gradient(circle at 50% 50%, transparent 20%, black 100%)'
                 }}
             />
 
