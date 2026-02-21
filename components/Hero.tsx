@@ -17,11 +17,31 @@ export default function Hero() {
                   User Explicit Reversal: Using the provided FoodHue snapshot 
                   instead of the CSS Dashboard to lock in the layout reference directly.
                 */}
-                <img
-                    src="/hero-image.png"
-                    alt="Platform Interface Demo"
-                    className="w-full rounded-[24px] shadow-2xl border border-black/5 object-cover object-top aspect-video bg-white"
-                />
+                {/* 
+                  Container for the Center-Grayscale / Edge-Color Effect 
+                  We isolate this within a relative wrapper so the floating cards 
+                  can still render freely outside of the mask limits.
+                */}
+                <div className="relative w-full rounded-[24px] overflow-hidden shadow-2xl border border-black/5 bg-white aspect-video isolate">
+                    {/* Layer 1: Base Grayscale Image */}
+                    <img
+                        src="/hero-image.png"
+                        alt="Platform Interface Base"
+                        className="absolute inset-0 w-full h-full object-cover object-top filter grayscale"
+                    />
+
+                    {/* Layer 2: Colored Overlay with Radial Mask */}
+                    <div
+                        className="absolute inset-0 w-full h-full"
+                        style={{
+                            backgroundImage: "url('/hero-image.png')",
+                            backgroundSize: "cover",
+                            backgroundPosition: "top center",
+                            WebkitMaskImage: "radial-gradient(circle at center, transparent 35%, black 80%)",
+                            maskImage: "radial-gradient(circle at center, transparent 35%, black 80%)"
+                        }}
+                    />
+                </div>
 
                 {/* Left Floating Card: Vertically centered, protruding 50% left */}
                 <FloatingCard className="top-1/2 -translate-y-1/2 -left-8 md:-left-24 w-64 hidden xl:flex animate-[bounce_10s_infinite]">
