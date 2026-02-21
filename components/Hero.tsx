@@ -1,4 +1,3 @@
-import SketchRevealAsset from "./SketchRevealAsset";
 import FloatingCard from "./FloatingCard";
 
 export default function Hero() {
@@ -14,7 +13,15 @@ export default function Hero() {
             </div>
 
             <div className="relative w-full max-w-5xl">
-                <SketchRevealAsset />
+                {/* 
+                  User Explicit Reversal: Using the provided FoodHue snapshot 
+                  instead of the CSS Dashboard to lock in the layout reference directly.
+                */}
+                <img
+                    src="/hero-image.png"
+                    alt="Platform Interface Demo"
+                    className="w-full rounded-[24px] shadow-2xl border border-black/5 object-cover object-top aspect-video bg-white"
+                />
 
                 {/* Left Floating Card: Vertically centered, protruding 50% left */}
                 <FloatingCard className="top-1/2 -translate-y-1/2 -left-8 md:-left-24 w-64 hidden xl:flex animate-[bounce_10s_infinite]">
