@@ -31,8 +31,8 @@ export default function Hero() {
                     </div>
                     <code className="text-xs text-text/80 font-mono">
                         $ npx deploy --target edge<br />
-            > deploying... 100%<br />
-            > live on global edge
+                        {">"} deploying... 100%<br />
+                        {">"} live on global edge
                     </code>
                 </FloatingCard>
             </div>
