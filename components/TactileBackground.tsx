@@ -7,11 +7,11 @@ export default function TactileBackground() {
 
             {/* Grid Layer */}
             <div
-                className="fixed inset-0 z-[-1] w-screen h-screen pointer-events-none opacity-[0.03]"
+                className="fixed inset-0 z-[-1] w-screen h-screen pointer-events-none opacity-[0.05]"
                 style={{
                     backgroundImage: `
-            linear-gradient(to right, #1A1A1A 1px, transparent 1px),
-            linear-gradient(to bottom, #1A1A1A 1px, transparent 1px)
+            linear-gradient(to right, #2A241D 1px, transparent 1px),
+            linear-gradient(to bottom, #2A241D 1px, transparent 1px)
           `,
                     backgroundSize: '40px 40px'
                 }}
