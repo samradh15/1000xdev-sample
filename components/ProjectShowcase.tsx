@@ -5,14 +5,14 @@ import React from 'react';
 export default function ProjectShowcase() {
     return (
         <section className="w-full py-32 px-6 relative z-10">
-            <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-start relative">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 relative items-start max-w-7xl mx-auto w-full">
 
-                {/* Left Column: Sticky Marketing (lg:col-span-4) */}
-                <div className="lg:col-span-4 lg:sticky lg:top-36 flex flex-col gap-8">
-                    <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#2A241D] leading-[1.05]">
+                {/* Left Column: Sticky Marketing */}
+                <div className="lg:col-span-5 sticky top-32 self-start h-fit flex flex-col gap-8">
+                    <h2 className="text-6xl font-serif text-[#2A241D]">
                         Proof of Work: Infrastructure that scales.
                     </h2>
-                    <p className="font-sans text-lg md:text-xl text-[#2A241D]/60 leading-relaxed font-medium">
+                    <p className="text-lg text-[#1A1A1A]/80 font-sans">
                         We don't just paint beautiful screens. We engineer resilient, AI-native products designed to handle your first million users.
                     </p>
 
@@ -22,20 +22,20 @@ export default function ProjectShowcase() {
                             "Investors say take my damn money",
                             "Scalable infrastructure from Day 1"
                         ].map((item, idx) => (
-                            <li key={idx} className="flex items-start gap-4">
-                                <div className="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-[#E08552]" />
-                                <span className="font-sans text-base md:text-lg text-[#2A241D] opacity-90 font-medium leading-snug">{item}</span>
+                            <li key={idx} className="flex flex-row items-center gap-4">
+                                <div className="w-2 h-2 shrink-0 rounded-full bg-[#E08552]" />
+                                <span className="font-sans text-lg text-[#2A241D] font-medium leading-snug">{item}</span>
                             </li>
                         ))}
                     </ul>
 
-                    <button className="mt-8 bg-[#E08552] text-white px-8 py-4 rounded-sm font-sans font-semibold tracking-wide hover:bg-[#c97444] transition-colors w-max hover:-translate-y-0.5 duration-300 shadow-[0_4px_12px_rgba(224,133,82,0.2)]">
+                    <button className="bg-[#E08552] text-[#2A241D] rounded-none px-8 py-4 font-bold w-fit">
                         View All Projects
                     </button>
                 </div>
 
-                {/* Right Column: Dynamic Project Grid (lg:col-span-8) */}
-                <div className="lg:col-span-8 flex flex-col gap-12">
+                {/* Right Column: Dynamic Project Grid */}
+                <div className="lg:col-span-7 flex flex-col gap-12">
 
                     {/* CSS Grid for the 5 cards */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
