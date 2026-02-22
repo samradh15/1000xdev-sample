@@ -8,7 +8,7 @@ export default function ContactSection() {
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
 
                 {/* Left Column */}
-                <div className="lg:col-span-6 flex flex-col gap-12">
+                <div className="lg:col-span-6 flex flex-col justify-center h-full gap-8 lg:pr-12">
                     <div className="flex flex-col gap-6">
                         <h2 className="text-6xl lg:text-7xl font-serif text-[#2A241D] leading-[1.05] tracking-tight">
                             Talk to us <br className="hidden lg:block" />
@@ -22,31 +22,6 @@ export default function ContactSection() {
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
                             founders@1000xdev.com
                         </a>
-                    </div>
-
-                    {/* Placeholder Video Player as seen in reference */}
-                    <div className="w-full aspect-video bg-black rounded-2xl relative overflow-hidden group cursor-pointer shadow-xl border border-white/10 mt-4 md:max-w-[90%]">
-                        {/* Abstract placeholder graphic mimicking the reference */}
-                        <div className="absolute inset-0 flex items-center justify-center opacity-90 group-hover:opacity-100 transition-opacity duration-700 bg-[#0d0d0d]">
-                            {/* Abstract shapes matching Everything.Design vibrant fluid lines */}
-                            <div className="absolute w-20 h-40 bg-[#FF5B24] rounded-full top-[10%] left-[45%] rotate-[-20deg] blur-[2px]" />
-                            <div className="absolute w-24 h-56 bg-[#00E5FF] rounded-full top-[5%] right-[25%] rotate-[15deg] blur-[1.5px]" />
-                            <div className="absolute w-16 h-32 bg-[#CCFF00] rounded-full bottom-0 left-[35%] rotate-[45deg]" />
-                            <div className="absolute w-12 h-12 bg-[#2D7FF9] rounded-sm transform rotate-12 left-[15%] top-[60%] shadow-[4px_4px_0_#FF5B24]" />
-
-                            <p className="absolute bottom-12 font-serif text-[#F9F8F6] text-sm md:text-base text-center max-w-[80%] z-10 font-medium">
-                                We gather all the technical primitives <br />
-                                to engineer a perfectly clear architectural path.
-                            </p>
-                        </div>
-
-                        {/* Play Video Button Overlay */}
-                        <div className="absolute bottom-6 right-6 bg-white/95 rounded-full py-3 px-5 flex items-center gap-3 group-hover:scale-105 transition-transform duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.5)] z-20">
-                            <span className="font-sans text-[13px] font-semibold text-[#1A1A1A]">Play Video</span>
-                            <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center border border-black/10 shadow-sm">
-                                <div className="w-0 h-0 border-t-[4px] border-t-transparent border-l-[6px] border-l-[#1A1A1A] border-b-[4px] border-b-transparent ml-0.5" />
-                            </div>
-                        </div>
                     </div>
                 </div>
 
