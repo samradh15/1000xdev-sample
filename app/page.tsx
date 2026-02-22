@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import TrustMarquee from "@/components/TrustMarquee";
 import ThesisBento from "@/components/ThesisBento";
 import ProjectShowcase from "@/components/ProjectShowcase";
+import Testimonials from "@/components/Testimonials";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <TrustMarquee />
       <ThesisBento />
       <ProjectShowcase />
+      <Testimonials />
     </main>
   );
 }
