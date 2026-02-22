@@ -6,7 +6,7 @@ import ProjectShowcase from "@/components/ProjectShowcase";
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col relative w-full overflow-hidden">
+    <main className="min-h-screen flex flex-col relative w-full overflow-x-clip">
       <Navbar />
       <Hero />
       <TrustMarquee />
