@@ -32,14 +32,14 @@ export default function TrustMarquee() {
                 <div className="flex w-full">
                     <div className="flex shrink-0 animate-marquee-reverse min-w-full justify-around items-center gap-16 pr-16">
                         {LOGOS.map((logo, i) => (
-                            <span key={`r1-a-${i}`} className="text-3xl sm:text-4xl font-bold tracking-wider text-black opacity-40 hover:opacity-100 transition-opacity duration-300 cursor-default select-none">
+                            <span key={`r1-a-${i}`} className="text-3xl sm:text-4xl font-bold tracking-wider text-black opacity-40 hover:opacity-100 hover:text-[#E08552] transition-colors duration-300 cursor-default select-none">
                                 {logo}
                             </span>
                         ))}
                     </div>
                     <div aria-hidden="true" className="flex shrink-0 animate-marquee-reverse min-w-full justify-around items-center gap-16 pr-16">
                         {LOGOS.map((logo, i) => (
-                            <span key={`r1-b-${i}`} className="text-3xl sm:text-4xl font-bold tracking-wider text-black opacity-40 hover:opacity-100 transition-opacity duration-300 cursor-default select-none">
+                            <span key={`r1-b-${i}`} className="text-3xl sm:text-4xl font-bold tracking-wider text-black opacity-40 hover:opacity-100 hover:text-[#E08552] transition-colors duration-300 cursor-default select-none">
                                 {logo}
                             </span>
                         ))}
@@ -51,14 +51,14 @@ export default function TrustMarquee() {
                 <div className="flex w-full">
                     <div className="flex shrink-0 animate-marquee min-w-full justify-around items-center gap-16 pr-16">
                         {[...LOGOS].reverse().map((logo, i) => (
-                            <span key={`r2-a-${i}`} className="text-3xl sm:text-4xl font-bold tracking-wider text-black opacity-40 hover:opacity-100 transition-opacity duration-300 cursor-default select-none">
+                            <span key={`r2-a-${i}`} className="text-3xl sm:text-4xl font-bold tracking-wider text-black opacity-40 hover:opacity-100 hover:text-[#E08552] transition-colors duration-300 cursor-default select-none">
                                 {logo}
                             </span>
                         ))}
                     </div>
                     <div aria-hidden="true" className="flex shrink-0 animate-marquee min-w-full justify-around items-center gap-16 pr-16">
                         {[...LOGOS].reverse().map((logo, i) => (
-                            <span key={`r2-b-${i}`} className="text-3xl sm:text-4xl font-bold tracking-wider text-black opacity-40 hover:opacity-100 transition-opacity duration-300 cursor-default select-none">
+                            <span key={`r2-b-${i}`} className="text-3xl sm:text-4xl font-bold tracking-wider text-black opacity-40 hover:opacity-100 hover:text-[#E08552] transition-colors duration-300 cursor-default select-none">
                                 {logo}
                             </span>
                         ))}

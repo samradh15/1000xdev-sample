@@ -18,7 +18,7 @@ export default function ThesisBento() {
                     {/* Sticky container */}
                     <div className="sticky top-32 flex flex-col gap-8">
                         <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-text leading-[1.1]">
-                            Stop building <span className="italic font-light">throwaway MVPs.</span>
+                            Stop building <span className="italic font-light text-[#E08552]">throwaway MVPs.</span>
                         </h2>
                         <p className="font-sans text-lg md:text-xl text-[#1A1A1A]/80 leading-relaxed font-medium">
                             Most AI startups die from technical debt before they reach Series A. We don't build brittle prototypes. We engineer scalable, AI-native infrastructure designed to handle your first million users.

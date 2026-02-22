@@ -13,7 +13,7 @@ export default function Hero() {
                 className="max-w-4xl text-center flex flex-col items-center gap-6 mb-16 z-10"
             >
                 <h1 className="font-serif text-5xl md:text-7xl font-bold tracking-tight text-text leading-[1.1]">
-                    We turn raw ideas into <span className="italic font-light">shipped</span> infrastructure.
+                    We turn raw ideas into <span className="italic font-light text-[#E08552] pr-2">shipped</span> infrastructure.
                 </h1>
                 <p className="font-sans text-lg md:text-xl text-text/70 max-w-2xl font-medium">
                     Infrastructure-grade engineering for AI-native startups.
@@ -76,6 +76,10 @@ export default function Hero() {
                         <div className="flex border-b border-black/5 pb-3">
                             <span className="text-lg font-serif text-text leading-tight font-medium">Terminal<br />Deployment</span>
                         </div>
+                        {/* Action */}
+                        <button className="bg-[#E08552] text-[#2A241D] px-8 py-4 font-bold tracking-wide w-fit transition-transform hover:scale-105">
+                            Book a technical consultation
+                        </button>
                         <code className="text-[10px] text-text/80 font-mono mt-2 bg-[#F4F0EB]/50 p-2 rounded-md">
                             &gt; target edge<br />
                             &gt; deploying... 100%<br />
