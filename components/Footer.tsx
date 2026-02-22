@@ -100,7 +100,7 @@ export default function Footer() {
                             HELLO@1000X.DEV
                             <span className="text-[#E08552] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all font-sans">↗</span>
                         </a>
-                        <span className="opacity-50 mt-4">KANPUR, INDIA</span>
+                        <span className="opacity-50 mt-4">MADHYA PRADESH, INDIA</span>
                     </div>
                 </div>
 
