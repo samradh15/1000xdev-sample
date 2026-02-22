@@ -38,48 +38,71 @@ const TESTIMONIALS = [
 
 export default function Testimonials() {
     return (
-        <section className="w-full py-32 overflow-hidden relative z-10 flex flex-col gap-16">
-            <div className="max-w-7xl mx-auto w-full px-6 flex flex-col gap-6">
-                {/* Header */}
-                <h2 className="text-5xl lg:text-6xl font-serif text-[#2A241D] font-bold tracking-tight leading-[1.05] max-w-2xl">
-                    Client testimonials backing our engineering results.
-                </h2>
-                <p className="font-sans text-lg text-[#1A1A1A]/80 font-medium leading-relaxed max-w-2xl">
-                    Founders who trusted us to build their technical moats.
-                </p>
-            </div>
+        <section className="w-full py-32 px-6 relative z-10 overflow-hidden">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-start relative">
 
-            {/* Infinite Horizontal Marquee */}
-            <div
-                className="w-full relative flex items-center"
-                style={{ maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}
-            >
-                <div className="flex flex-row gap-6 animate-marquee hover:[animation-play-state:paused] w-max px-6">
+                {/* Left Column: Sticky Header */}
+                <div className="lg:col-span-4 lg:sticky lg:top-36 self-start flex flex-col gap-8">
+                    <h2 className="text-5xl lg:text-6xl font-serif text-[#2A241D] font-bold tracking-tight leading-[1.05]">
+                        Client <br className="hidden lg:block" />
+                        testimonials <br className="hidden lg:block" />
+                        backing <br className="hidden lg:block" />
+                        our engineering <br className="hidden lg:block" />
+                        results.
+                    </h2>
+                    <p className="font-sans text-lg text-[#1A1A1A]/80 font-medium leading-relaxed">
+                        Founders who trusted us to build their technical moats.
+                    </p>
+                </div>
 
-                    {/* We render the array twice to create the seamless CSS loop. */}
-                    {[...TESTIMONIALS, ...TESTIMONIALS].map((testimonial, idx) => (
-                        <div
-                            key={idx}
-                            className="w-[350px] md:w-[450px] shrink-0 bg-white/40 backdrop-blur-sm border border-black/5 rounded-2xl p-8 shadow-[0_8px_30px_rgba(0,0,0,0.04)] flex flex-col justify-between gap-6 group hover:bg-white/60 transition-colors h-full"
-                        >
-                            <p className="text-lg text-[#1A1A1A] font-sans font-medium leading-relaxed">
-                                "{testimonial.quote}"
-                            </p>
+                {/* Right Column: Horizontal Marquee Container */}
+                <div
+                    className="lg:col-span-8 relative w-full overflow-hidden"
+                    style={{ maskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)' }}
+                >
+                    {/* The Scrolling Track */}
+                    <div className="flex flex-row gap-6 animate-marquee hover:[animation-play-state:paused] w-max items-stretch py-4">
 
-                            <div className="flex flex-row items-center gap-4 mt-auto pt-4">
-                                <div className="w-10 h-10 rounded-full bg-black/10 border border-black/5 shrink-0 overflow-hidden relative group-hover:border-[#E08552] transition-colors" />
-                                <div className="flex flex-col flex-1 shrink-0 overflow-hidden">
-                                    <span className="font-sans font-bold text-sm text-[#2A241D] leading-none mb-1">
-                                        {testimonial.author}
-                                    </span>
-                                    <span className="font-sans text-xs text-black/50 tracking-widest uppercase truncate leading-none">
-                                        {testimonial.role}
-                                    </span>
+                        {/* We render the array twice to create the seamless CSS loop. */}
+                        {[...TESTIMONIALS, ...TESTIMONIALS].map((testimonial, idx) => (
+                            <div
+                                key={idx}
+                                className="w-[320px] md:w-[420px] shrink-0 bg-white/50 backdrop-blur-sm border border-black/5 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] flex flex-col justify-start group hover:bg-white/80 transition-colors overflow-hidden"
+                            >
+                                {/* Video/Image Placeholder Header (as seen in reference) */}
+                                <div className="w-full aspect-video bg-black/5 relative overflow-hidden flex items-center justify-center">
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent mix-blend-multiply" />
+                                    {/* Play Button Mockup */}
+                                    <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm rounded-full py-2 px-4 flex items-center gap-2 shadow-sm font-sans text-xs font-semibold text-[#2A241D]">
+                                        Play Video
+                                        <div className="w-4 h-4 bg-[#2A241D] rounded-full flex items-center justify-center">
+                                            <div className="w-0 h-0 border-t-[4px] border-t-transparent border-l-[6px] border-l-white border-b-[4px] border-b-transparent ml-0.5" />
+                                        </div>
+                                    </div>
+                                    {/* Placeholder Avatar/Face representation */}
+                                    <div className="w-16 h-16 rounded-full bg-white/20 border-2 border-white/40 blur-sm absolute" />
+                                </div>
+
+                                {/* Content Body */}
+                                <div className="p-8 flex flex-col gap-6 flex-1">
+                                    <div>
+                                        <h3 className="font-serif text-2xl text-[#2A241D] font-medium mb-1 tracking-tight">
+                                            {testimonial.author}
+                                        </h3>
+                                        <p className="font-mono text-[10px] text-black/50 tracking-[0.2em] uppercase leading-none font-bold">
+                                            {testimonial.role}
+                                        </p>
+                                    </div>
+
+                                    <p className="text-base text-[#1A1A1A]/80 font-sans font-medium leading-relaxed">
+                                        "{testimonial.quote.split('. ')[0]}. <span className="bg-[#E08552]/20 px-1 rounded-sm">{testimonial.quote.split('. ')[1]}.</span>"
+                                    </p>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
+
             </div>
         </section>
     );
