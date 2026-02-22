@@ -2,9 +2,9 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import TrustMarquee from "@/components/TrustMarquee";
 import ThesisBento from "@/components/ThesisBento";
-import ArchitectureTeardown from '@/components/ArchitectureTeardown';
-import ProjectShowcase from '@/components/ProjectShowcase';
-import Testimonials from '@/components/Testimonials';
+import ProjectShowcase from "@/components/ProjectShowcase";
+import Testimonials from "@/components/Testimonials";
+import ContactSection from "@/components/ContactSection";
 
 export default function Home() {
   return (
@@ -13,9 +13,9 @@ export default function Home() {
       <Hero />
       <TrustMarquee />
       <ThesisBento />
-      <ArchitectureTeardown />
       <ProjectShowcase />
       <Testimonials />
+      <ContactSection />
     </main>
   );
 }
