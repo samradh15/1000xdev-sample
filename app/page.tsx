@@ -5,6 +5,7 @@ import ThesisBento from "@/components/ThesisBento";
 import ProjectShowcase from "@/components/ProjectShowcase";
 import Testimonials from "@/components/Testimonials";
 import ContactSection from "@/components/ContactSection";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <ProjectShowcase />
       <Testimonials />
       <ContactSection />
+      <Footer />
     </main>
   );
 }
