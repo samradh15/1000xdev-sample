@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import FloatingCard from "./FloatingCard";
 
 export default function Hero() {
@@ -15,9 +16,12 @@ export default function Hero() {
                 <h1 className="font-serif text-5xl md:text-7xl font-bold tracking-tight text-text leading-[1.1]">
                     We turn raw ideas into <span className="italic font-light text-[#E08552] pr-2">shipped</span> infrastructure.
                 </h1>
-                <p className="font-sans text-lg md:text-xl text-text/70 max-w-2xl font-medium">
+                <p className="font-sans text-lg md:text-xl text-text/70 max-w-2xl font-medium mb-4">
                     Infrastructure-grade engineering for AI-native startups.
                 </p>
+                <Link href="/dashboard" className="bg-[#E08552] text-[#2A241D] px-8 py-4 font-bold tracking-wide w-fit transition-transform hover:scale-105 rounded-md">
+                    Try It
+                </Link>
             </motion.div>
 
             <motion.div
