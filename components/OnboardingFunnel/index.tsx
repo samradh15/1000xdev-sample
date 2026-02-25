@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import StepWelcome from "./StepWelcome";
 import StepProjectType from "./StepProjectType";
 import StepProof from "./StepProof";
@@ -106,15 +107,20 @@ export default function OnboardingFunnel({ onClose }: Props) {
                         />
                     </div>
 
-                    <div className="flex items-center justify-between px-5 py-3">
-                        {/* Step dots */}
-                        <div className="flex items-center gap-2">
+                    <div className="relative flex items-center justify-between px-5 py-3">
+                        {/* Logo — home link */}
+                        <Link href="/" onClick={onClose} className="font-serif font-bold text-lg tracking-tighter text-[#2A241D] hover:text-[#C84B31] transition-colors whitespace-nowrap">
+                            1000x<span className="italic font-light">Dev</span>
+                        </Link>
+
+                        {/* Step dots — centered */}
+                        <div className="flex items-center gap-2 absolute left-1/2 -translate-x-1/2">
                             {Array.from({ length: TOTAL_STEPS + 1 }).map((_, i) => (
                                 <div
                                     key={i}
                                     className={`w-2 h-2 rounded-full transition-all duration-300 ${i < step ? "bg-[#C84B31]" :
-                                            i === step ? "bg-[#C84B31] scale-125 shadow-[0_0_0_3px_rgba(200,75,49,0.15)]" :
-                                                "bg-black/10"
+                                        i === step ? "bg-[#C84B31] scale-125 shadow-[0_0_0_3px_rgba(200,75,49,0.15)]" :
+                                            "bg-black/10"
                                         }`}
                                 />
                             ))}
