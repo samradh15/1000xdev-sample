@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import FloatingCard from "./FloatingCard";
 
-export default function Hero() {
+type Props = { onTryIt: () => void };
+
+export default function Hero({ onTryIt }: Props) {
     return (
         <section className="relative w-full min-h-screen flex flex-col items-center justify-center pt-32 pb-20 px-6">
             <motion.div
@@ -19,9 +20,12 @@ export default function Hero() {
                 <p className="font-sans text-lg md:text-xl text-text/70 max-w-2xl font-medium mb-4">
                     Infrastructure-grade engineering for AI-native startups.
                 </p>
-                <Link href="/dashboard" className="bg-[#E08552] text-[#2A241D] px-8 py-4 font-bold tracking-wide w-fit transition-transform hover:scale-105 rounded-md">
+                <button
+                    onClick={onTryIt}
+                    className="bg-[#E08552] text-[#2A241D] px-8 py-4 font-bold tracking-wide w-fit transition-transform hover:scale-105 rounded-md cursor-pointer"
+                >
                     Try It
-                </Link>
+                </button>
             </motion.div>
 
             <motion.div
@@ -30,24 +34,12 @@ export default function Hero() {
                 transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
                 className="relative w-full max-w-5xl"
             >
-                {/* 
-                  User Explicit Reversal: Using the provided FoodHue snapshot 
-                  instead of the CSS Dashboard to lock in the layout reference directly.
-                */}
-                {/* 
-                  Container for the Center-Grayscale / Edge-Color Effect 
-                  We isolate this within a relative wrapper so the floating cards 
-                  can still render freely outside of the mask limits.
-                */}
                 <div className="relative w-full rounded-[24px] overflow-hidden shadow-2xl border border-black/5 bg-white aspect-video isolate">
-                    {/* Layer 1: Base Grayscale Image with High Contrast/Brightness for "Raw Scratch" feel */}
                     <img
                         src="/hero-image.png"
                         alt="Platform Interface Base"
                         className="absolute inset-0 w-full h-full object-cover object-top filter saturate-0 contrast-[1.5] brightness-[1.1]"
                     />
-
-                    {/* Layer 2: Colored Overlay with Radial Mask */}
                     <div
                         className="absolute inset-0 w-full h-full"
                         style={{
@@ -60,7 +52,6 @@ export default function Hero() {
                     />
                 </div>
 
-                {/* Left Floating Card: Vertically centered, protruding 50% left */}
                 <FloatingCard className="top-1/2 -translate-y-1/2 -left-8 md:-left-24 w-64 hidden xl:flex animate-[bounce_10s_infinite]">
                     <div className="flex flex-col gap-3">
                         <div className="flex items-center gap-2 mb-2">
@@ -73,14 +64,12 @@ export default function Hero() {
                     </div>
                 </FloatingCard>
 
-                {/* Right Floating Card: Lower 20%, protruding 50% right */}
                 <FloatingCard className="bottom-[10%] -translate-y-0 -right-8 md:-right-24 w-56 hidden xl:flex animate-[bounce_8s_infinite_reverse]">
                     <div className="flex flex-col gap-3">
                         <span className="text-xs font-semibold text-text/50 font-sans tracking-wide">Live Output</span>
                         <div className="flex border-b border-black/5 pb-3">
                             <span className="text-lg font-serif text-text leading-tight font-medium">Terminal<br />Deployment</span>
                         </div>
-                        {/* Action */}
                         <button className="bg-[#E08552] text-[#2A241D] px-8 py-4 font-bold tracking-wide w-fit transition-transform hover:scale-105">
                             Book a technical consultation
                         </button>

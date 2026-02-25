@@ -1,8 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import DemoBanner from "@/components/OnboardingFunnel/DemoBanner";
+import FloatingCta from "@/components/OnboardingFunnel/FloatingCta";
+import { PROJECT_TYPES } from "@/components/OnboardingFunnel/data";
 import {
     LayoutDashboard, CheckSquare, MessageSquare, FileText,
     CreditCard, ThumbsUp, Settings, Bell, ChevronRight,
@@ -641,9 +645,19 @@ const ADMIN_NAV = [
     { id: "approvals", label: "Approvals", Icon: ThumbsUp },
 ];
 
-export default function DashboardPage() {
+function DashboardInner() {
+    const searchParams = useSearchParams();
+    const isDemo = searchParams.get("demo") === "1";
+    const demoName = searchParams.get("name") || "";
+    const demoCompany = searchParams.get("company") || "";
+    const demoType = searchParams.get("type") || "web";
+    const demoFirstName = demoName.split(" ")[0] || "Friend";
+    const demoInitials = demoName.split(" ").map(w => w[0]).join("").toUpperCase().slice(0, 2) || "U";
+    const demoTypeLabel = PROJECT_TYPES.find(p => p.id === demoType)?.label || "Web Application";
+    const demoProjectName = demoCompany ? `${demoCompany} – ${demoTypeLabel}` : `Your Dream Project – ${demoTypeLabel}`;
+
     const [tab, setTab] = useState("overview");
-    const [role, setRole] = useState<"client" | "admin">("client");
+    const [role, setRole] = useState<"client" | "admin">(isDemo ? "client" : "client");
     const [mobileOpen, setMobileOpen] = useState(false);
 
     const nav = role === "admin" ? ADMIN_NAV : CLIENT_NAV;
@@ -661,102 +675,116 @@ export default function DashboardPage() {
     })();
 
     return (
-        <div className="min-h-screen bg-[#F9F8F6] text-[#2A241D] font-sans flex">
+        <div className="min-h-screen bg-[#F9F8F6] text-[#2A241D] font-sans flex flex-col">
+            {isDemo && <DemoBanner />}
+            <div className="flex flex-1">
 
-            {/* Mobile overlay */}
-            {mobileOpen && (
-                <div className="fixed inset-0 bg-black/20 z-40 md:hidden" onClick={() => setMobileOpen(false)} />
-            )}
-
-            {/* Sidebar */}
-            <aside className={`fixed top-0 left-0 z-50 h-screen w-60 bg-[#F9F8F6]/95 backdrop-blur-xl border-r border-black/5 flex flex-col transition-transform duration-300 ${mobileOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0`}>
-                {/* Logo */}
-                <div className="p-5 border-b border-black/5">
-                    <Link href="/" className="font-serif font-bold text-xl tracking-tighter text-[#2A241D] block mb-4">
-                        1000x<span className="italic font-light">Dev</span>
-                    </Link>
-                    {/* Role Toggle */}
-                    <div className="flex bg-black/[0.04] rounded-xl p-1 gap-0.5">
-                        <button onClick={() => { setRole("client"); setTab("overview"); }}
-                            className={`flex-1 py-1.5 rounded-lg text-xs font-semibold transition-all ${role === "client" ? "bg-[#E08552] text-white shadow-sm" : "text-[#2A241D]/50"}`}>
-                            Client
-                        </button>
-                        <button onClick={() => { setRole("admin"); setTab("admin"); }}
-                            className={`flex-1 py-1.5 rounded-lg text-xs font-semibold transition-all ${role === "admin" ? "bg-[#E08552] text-white shadow-sm" : "text-[#2A241D]/50"}`}>
-                            Admin
-                        </button>
-                    </div>
-                </div>
-
-                {/* Project info (client only) */}
-                {role === "client" && (
-                    <div className="mx-3 mt-3 p-3 bg-white/50 rounded-xl border border-black/5">
-                        <div className="text-[9px] uppercase tracking-widest font-bold text-[#2A241D]/30 mb-1">Active Project</div>
-                        <div className="text-xs font-semibold text-[#2A241D] leading-tight mb-1">{PROJECT.name}</div>
-                        <div className="flex items-center gap-1.5">
-                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                            <span className="text-[10px] text-[#2A241D]/40">On Track · {PROJECT.progress}%</span>
-                        </div>
-                    </div>
+                {/* Mobile overlay */}
+                {mobileOpen && (
+                    <div className="fixed inset-0 bg-black/20 z-40 md:hidden" onClick={() => setMobileOpen(false)} />
                 )}
 
-                {/* Nav */}
-                <nav className="flex-1 p-3 overflow-y-auto">
-                    {nav.map((item) => (
-                        <button key={item.id} onClick={() => { setTab(item.id); setMobileOpen(false); }}
-                            className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm font-medium transition-all mb-0.5 ${tab === item.id
-                                ? "bg-[#E08552]/10 text-[#E08552]"
-                                : "text-[#2A241D]/50 hover:bg-black/[0.03] hover:text-[#2A241D]"
-                                }`}>
-                            <item.Icon size={16} />
-                            {item.label}
-                            {item.id === "approvals" && (
-                                <span className="ml-auto w-4.5 h-4.5 rounded-full bg-[#E08552] text-white text-[9px] font-bold flex items-center justify-center">1</span>
-                            )}
-                        </button>
-                    ))}
-                </nav>
+                {/* Sidebar */}
+                <aside className={`fixed top-0 left-0 z-50 h-screen w-60 bg-[#F9F8F6]/95 backdrop-blur-xl border-r border-black/5 flex flex-col transition-transform duration-300 ${mobileOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0`}>
+                    {/* Logo */}
+                    <div className="p-5 border-b border-black/5">
+                        <Link href="/" className="font-serif font-bold text-xl tracking-tighter text-[#2A241D] block mb-4">
+                            1000x<span className="italic font-light">Dev</span>
+                        </Link>
+                        {/* Role Toggle */}
+                        {!isDemo && (
+                            <div className="flex bg-black/[0.04] rounded-xl p-1 gap-0.5">
+                                <button onClick={() => { setRole("client"); setTab("overview"); }}
+                                    className={`flex-1 py-1.5 rounded-lg text-xs font-semibold transition-all ${role === "client" ? "bg-[#E08552] text-white shadow-sm" : "text-[#2A241D]/50"}`}>
+                                    Client
+                                </button>
+                                <button onClick={() => { setRole("admin"); setTab("admin"); }}
+                                    className={`flex-1 py-1.5 rounded-lg text-xs font-semibold transition-all ${role === "admin" ? "bg-[#E08552] text-white shadow-sm" : "text-[#2A241D]/50"}`}>
+                                    Admin
+                                </button>
+                            </div>
+                        )}
+                    </div>
 
-                {/* User */}
-                <div className="p-4 border-t border-black/5">
-                    <div className="flex items-center gap-2.5">
-                        <Avatar initials={role === "client" ? PROJECT.avatar : "AS"} size={32} />
-                        <div className="flex-1 min-w-0">
-                            <div className="text-xs font-semibold text-[#2A241D] truncate">{role === "client" ? PROJECT.client : "Aryan Singh"}</div>
-                            <div className="text-[10px] text-[#2A241D]/40">{role === "client" ? "Client" : "Project Manager"}</div>
+                    {/* Project info (client only) */}
+                    {role === "client" && (
+                        <div className="mx-3 mt-3 p-3 bg-white/50 rounded-xl border border-black/5">
+                            <div className="text-[9px] uppercase tracking-widest font-bold text-[#2A241D]/30 mb-1">Active Project</div>
+                            <div className="text-xs font-semibold text-[#2A241D] leading-tight mb-1">{isDemo ? demoProjectName : PROJECT.name}</div>
+                            <div className="flex items-center gap-1.5">
+                                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                                <span className="text-[10px] text-[#2A241D]/40">On Track · {isDemo ? 38 : PROJECT.progress}%</span>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Nav */}
+                    <nav className="flex-1 p-3 overflow-y-auto">
+                        {nav.map((item) => (
+                            <button key={item.id} onClick={() => { setTab(item.id); setMobileOpen(false); }}
+                                className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm font-medium transition-all mb-0.5 ${tab === item.id
+                                    ? "bg-[#E08552]/10 text-[#E08552]"
+                                    : "text-[#2A241D]/50 hover:bg-black/[0.03] hover:text-[#2A241D]"
+                                    }`}>
+                                <item.Icon size={16} />
+                                {item.label}
+                                {item.id === "approvals" && (
+                                    <span className="ml-auto w-4.5 h-4.5 rounded-full bg-[#E08552] text-white text-[9px] font-bold flex items-center justify-center">1</span>
+                                )}
+                            </button>
+                        ))}
+                    </nav>
+
+                    {/* User */}
+                    <div className="p-4 border-t border-black/5">
+                        <div className="flex items-center gap-2.5">
+                            <Avatar initials={isDemo ? demoInitials : (role === "client" ? PROJECT.avatar : "AS")} size={32} />
+                            <div className="flex-1 min-w-0">
+                                <div className="text-xs font-semibold text-[#2A241D] truncate">{isDemo ? demoName : (role === "client" ? PROJECT.client : "Aryan Singh")}</div>
+                                <div className="text-[10px] text-[#2A241D]/40">{isDemo ? "Demo Client" : (role === "client" ? "Client" : "Project Manager")}</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </aside>
+                </aside>
 
-            {/* Main Content */}
-            <div className="flex-1 md:ml-60 flex flex-col min-h-screen">
-                {/* Top bar */}
-                <header className="sticky top-0 z-30 h-14 flex items-center px-5 border-b border-black/5 bg-[#F9F8F6]/80 backdrop-blur-xl">
-                    <button className="md:hidden mr-3 text-[#2A241D]/50" onClick={() => setMobileOpen(true)}>
-                        <Menu size={20} />
-                    </button>
-                    <div className="flex-1 flex items-center gap-2 text-xs text-[#2A241D]/40">
-                        <span>1000X Portal</span>
-                        <ChevronRight size={11} />
-                        <span className="text-[#2A241D]/60 font-medium">{nav.find((n) => n.id === tab)?.label || "Dashboard"}</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                        <button className="relative border border-black/5 rounded-xl p-2 text-[#2A241D]/40 hover:text-[#E08552] hover:border-[#E08552]/30 transition-colors">
-                            <Bell size={15} />
-                            <div className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-[#E08552]" />
+                {/* Main Content */}
+                <div className="flex-1 md:ml-60 flex flex-col min-h-screen">
+                    {/* Top bar */}
+                    <header className="sticky top-0 z-30 h-14 flex items-center px-5 border-b border-black/5 bg-[#F9F8F6]/80 backdrop-blur-xl">
+                        <button className="md:hidden mr-3 text-[#2A241D]/50" onClick={() => setMobileOpen(true)}>
+                            <Menu size={20} />
                         </button>
-                        <Link href="/" className="border border-black/5 rounded-xl px-3 py-2 text-xs text-[#2A241D]/40 hover:text-[#E08552] hover:border-[#E08552]/30 transition-colors flex items-center gap-1.5">
-                            <Globe size={12} />1000xdev.com
-                        </Link>
-                    </div>
-                </header>
+                        <div className="flex-1 flex items-center gap-2 text-xs text-[#2A241D]/40">
+                            <span>1000X Portal</span>
+                            <ChevronRight size={11} />
+                            <span className="text-[#2A241D]/60 font-medium">{nav.find((n) => n.id === tab)?.label || "Dashboard"}</span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                            <button className="relative border border-black/5 rounded-xl p-2 text-[#2A241D]/40 hover:text-[#E08552] hover:border-[#E08552]/30 transition-colors">
+                                <Bell size={15} />
+                                <div className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-[#E08552]" />
+                            </button>
+                            <Link href="/" className="border border-black/5 rounded-xl px-3 py-2 text-xs text-[#2A241D]/40 hover:text-[#E08552] hover:border-[#E08552]/30 transition-colors flex items-center gap-1.5">
+                                <Globe size={12} />1000xdev.com
+                            </Link>
+                        </div>
+                    </header>
 
-                {/* Content */}
-                <main className="flex-1 p-5 md:p-8 max-w-[1200px]">
-                    {view}
-                </main>
+                    {/* Content */}
+                    <main className="flex-1 p-5 md:p-8 max-w-[1200px]">
+                        {view}
+                    </main>
+                </div>
+                {isDemo && <FloatingCta />}
             </div>
         </div>
+    );
+}
+
+export default function DashboardPage() {
+    return (
+        <Suspense fallback={<div className="min-h-screen bg-[#F9F8F6]" />}>
+            <DashboardInner />
+        </Suspense>
     );
 }
